@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="css/main.css">
+	<link href="Imagenes/email-2-icon.png" rel="shortcut icon" type="image/png"> 
+	<title>Letter - Usuario</title>
+</head>
+<body class="cuerpo">
+	<header class=" color h sombra">
+		<nav>
+			<img class="im verticalLine"src="Imagenes/email-icon.png">
+			<img class="im dere2" title="Cuenta de Letter: Greivin Calvo Aguilar - greivindca7@letter.com"src="Imagenes/Avatar.png">
+			<p class="pe">Letter</p>
+			<b class="pe-der" float=right>Greivin</b>
+		</nav>
+	</header>
+	<section>
+		<div class="nav">
+				<button class="boton" type="button" onclick = "document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'">Redactar </button> </br>
+				<hr>
+			<ul>
+				<li class="a imagenConPieDeTexto seleccionado"><a class="a" selected="selected" href="">Salida (3)</a></li>
+				<li class="a imagenConPieDeTexto"><a class="a"href="enviados.html">Enviados (3)</a></li>
+			</ul>
+		</div>
+		 <nav class="floatright">
+		 	<p class="hoy salto">Hoy</p>
+		 		<div class="colornuevo sombra">
+	 				<div>
+	 					<header>
+	 						<p>	Nuevo inicio de sesión desde Android</p>
+	 						<hr>
+	 					</header>
+	 				</div>
+	 			<div>
+	 					<p>Hola, Greivin:
+							Tu cuenta de Google, greivindca7@gmail.com, se acaba de usar para iniciar sesión con un dispositivo Android.
+	 					</br> ¿No reconoces esta actividad?
+								Revisa ahora los dispositivos que has utilizado recientemente.
+
+							¿Por qué lo enviamos? Nos tomamos la seguridad muy en serio y queremos que estés informado sobre las acciones importantes que tienen lugar en tu cuenta.
+							No hemos podido determinar si has utilizado este navegador o dispositivo con tu cuenta anteriormente. Esto puede ocurrir la primera vez que inicies sesión en un ordenador, teléfono o navegador nuevo, cuando utilices el modo incógnito de tu navegador o el modo de navegación privada, cuando borres las cookies o cuando otra persona acceda a tu cuenta.
+								Atentamente,
+								El equipo de Cuentas de Google </p>
+	 					<img src="Imagenes/google.jpg">
+	 			</div>
+	 			</br>
+	 			</div>
+	 				<hr>
+	 					<div>
+	 						<div class="floatleft"> 
+	 							<img title="Responder mensaje" src="Imagenes/responder.png">
+	 					    </div>
+	 					 <div class="imgcenter">
+	 					 		<a href="eliminar.html" title="Elimiar correo">
+	 							<img src="Imagenes/trash.png">
+	 						    </a>
+	 					 </div>
+	 				</div>		
+	 	</nav>
+	</section>
+			<div id="light" class="popup_content">
+				<section class="posicion derecha2">
+						<header>
+							<nav class="header">
+								<p>Mensaje Nuevo</p>
+								<a onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'"><img class="dere" title="Cancelar redacción"src="Imagenes/clear.png"></a>
+							</nav>
+						</header>
+					<nav class="txt-izq pr">
+							<input class="ta" type="text" value="" placeholder="Destinatarios"> 
+							<input class="ta" type="text" value="" placeholder="Asunto"> 
+							<input class="tamano3" type="text" value="" placeholder="Redactar"> 
+						<nav class="colorazo pr2">
+							<button class="b2 posicion sombra" type="button" value="cerrar" onclick = "	location.href='correonuevo.html'">Enviar </button>
+							<img class="im linea paddingr"src="Imagenes/trash.png">
+						</nav>
+					</nav>
+				</section>
+			</div>
+		<div id="fade" class="black_overlay"></div>
+	</body>
+</html>
