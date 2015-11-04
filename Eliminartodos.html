@@ -10,6 +10,7 @@
 	<header class=" color h sombra">
 		<nav>
 			<img class="im verticalLine"src="Imagenes/email-icon.png">
+			<button class="boton b3" type="button" onclick = "location.href='index.html'">Cerrar Sesion </button>
 			<img class="im dere2" title="Cuenta de Letter: Greivin Calvo Aguilar - greivindca7@letter.com"src="Imagenes/Avatar.png">
 			<p class="pe">Letter</p>
 		<b class="pe-der" float=right>Greivin</b>
@@ -29,21 +30,22 @@
 				puedes guardar un borrador para conservar un mensaje que no estés listo para enviar.</p>
 	 	</nav>
 	</section>
-<div id="light" class="popup_content">
+		<div id="light" class="popup_content">
 			<section class="posicion derecha2">
 				<header>
 					<nav class="header">
-					<p>Mensaje Nuevo</p>
-					<a onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'"><img class="dere" title="Cancelar redacción"src="Imagenes/clear.png"></a>
+					<p> <img class="le"src="Imagenes/email-.png">Mensaje Nuevo</p>
+					<a onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'"><img class="dere" title="Cancelar redacción"src="Imagenes/close.png"></a>
 					</nav>
 					</header>
-				<nav class="txt-izq pr">
+				<nav class="alinear">
+					<form>
 					<input class="ta" type="text" value="" placeholder="Destinatarios"> 
 					<input class="ta" type="text" value="" placeholder="Asunto"> 
-					<input class="tamano3" type="text" value="" placeholder="Redactar"> 
+					<textarea class="tamano3" type="text" value="" placeholder="Redactar"></textarea>
+					</form>
 					<nav class="colorazo pr2">
 					<button class="b2 posicion sombra" type="button" value="cerrar" onclick = "location.href='correonuevo.html'">Enviar </button>
-					<img class="im linea paddingr"src="Imagenes/trash.png">
 					</nav>
 				</nav>
 			</section>
