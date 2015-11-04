@@ -10,9 +10,10 @@
 	<header class=" color h sombra">
 		<nav>
 			<img class="im verticalLine"src="Imagenes/email-icon.png">
+			<button class="boton b3" type="button" onclick = "location.href='index.html'">Cerrar Sesion </button>
 			<img class="im dere2" title="Cuenta de Letter: Greivin Calvo Aguilar - greivindca7@letter.com"src="Imagenes/Avatar.png">
 			<p class="pe">Letter</p>
-			<b class="pe-der" float=right>Greivin</b>
+			<b class="pe-der">Greivin</b>
 		</nav>
 	</header>
 	<section>
@@ -20,58 +21,67 @@
 				<button class="boton" type="button" onclick = "document.getElementById('light').style.	display='block';document.getElementById('fade').style.display='block'">Redactar </button> </br>
 				<hr>
 			<ul>
-				<li class="a imagenConPieDeTexto seleccionado"><a class="a" selected="selected" href="">Salida (3)</a></li>
-				<li class="a imagenConPieDeTexto"><a class="a"href="enviados.html">Enviados (3)</a></li>
+				<li class="a imagenConPieDeTexto seleccionado"><a class="a" selected="selected" href="menuprincipal.html">Salida (3)</a></li>
+				<li class="a imagenConPieDeTexto"><a class="a"href="enviados.html">Enviados (2)</a></li>
 			</ul>
 		</div>
-		<nav class="floatright">
-		 		<p class="hoy salto">Hoy</p>
-		 	<div class="colornuevo sombra">
-	 			<div>
-	 				<header>
-	 					<p>Recordatorio de la matricula del tercer cuatrimestre</p>
-	 					<hr>
-	 				</header>
-	 			</div>
-	 			<div>
-	 				<p>Se les recuerda por favor estar pendientes a la pagina de la universidad 
-	 				</br> en los proximos días se estara publicando la lista definitiva de matricula </p>
-	 				<img src="Imagenes/utn.jpg">
-	 			</div>
-	 			</br>
-	 		</div>
-	 			<hr>
-	 				<div>
-	 					<div class="floatleft"> 
-	 						<img title="Responder mensaje" src="Imagenes/responder.png">
-	 					 </div>
-	 					 <div class="imgcenter">
-	 					 	<a href="eliminar.html" title="Elimiar correo">
-	 							<img src="Imagenes/trash.png">
-	 						 </a>
+	</section>
+		 <section class="floatright">
+		 <div class="espacio top">
+		 	<div class="colornuevo sombra2">
+		 	<header class=" header he">
+		 		<div>
+		 			<p class="txt izq">Informacion importante</p>
+	 					<div class="im floatleft"> 
+	 						<a onclick = "document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'" title="Elimiar correo">
+	 							<img class="padding" title="Responder mensaje" src="Imagenes/responder.png">
+	 						</a>
+	 					 <a href="editar2.html" title="Elimiar correo"> 
+	 						<img class="padding" title="Editar mensaje" src="Imagenes/edit.png">
+	 					</a>
+	 					 		<a href="eliminar.html" title="Elimiar correo">
+	 								<img class="padding" src="Imagenes/trash.png">
+	 						    </a>
 	 					 </div>
 	 				</div>
-	 	</nav>
-	</section>
+		 	</header>
+		 	<hr>
+		 		<div class="div ">
+		 			<p class="txt izq">Beca -infosancarlos@utn.ac.cr</p>
+	 				<div>
+	 					<header>
+	 						<p>Buenas tardes</p>
+	 					</header>
+	 				</div>
+	 			<div>
+	 				<p> me gustaria que me dieran informacion sobre como conseguir la beca socioeconomica </p>
+	 			</div>
+	 			</br>
+	 			</div>
+	 				</div>
+	 	 </div>
+	 	 </section>
 			<div id="light" class="popup_content">
-				<section class="posicion derecha2">
-					<header>
-						<nav class="header">
-							<p>Mensaje Nuevo</p>
-							<a onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'"><img class="dere" title="Cancelar redacción"src="Imagenes/clear.png"></a>
-						</nav>
+			<section class="posicion derecha2">
+				<header>
+					<nav class="header">
+					<p> <img class="le"src="Imagenes/email-.png">Mensaje Nuevo</p>
+					<a onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'"><img class="dere" title="Cancelar redacción"src="Imagenes/close.png"></a>
+					</nav>
 					</header>
-					<nav class="txt-izq pr">
-							<input class="ta" type="text" value="" placeholder="Destinatarios"> 
-							<input class="ta" type="text" value="" placeholder="Asunto"> 
-							<input class="tamano3" type="text" value="" placeholder="Redactar"> 
+				<nav class="alinear">
+					<form>
+					<input class="ta" type="text" value="" placeholder="Destinatarios"> 
+					<input class="ta" type="text" value="" placeholder="Asunto"> 
+					<textarea class="tamano3" type="text" value="" placeholder="Redactar"></textarea>
+					</form>
 					<nav class="colorazo pr2">
-							<button class="b2 posicion sombra" type="button" value="cerrar" onclick = "location.href='correonuevo.html'">Enviar </button>
-							<img class="im linea paddingr"src="Imagenes/trash.png">
+					<button class="b2 posicion sombra" type="button" value="cerrar" onclick = "location.href='correonuevo.html'">Enviar </button>
+					<img class="im linea paddingr"src="Imagenes/trash.png">
 					</nav>
-					</nav>
-				</section>
-			</div>
+				</nav>
+			</section>
+		</div>
 		<div id="fade" class="black_overlay"></div>
 	</body>
 </html>
