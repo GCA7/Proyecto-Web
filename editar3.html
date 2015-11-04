@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="css/main.css">
+	<link href="Imagenes/email-2-icon.png" rel="shortcut icon" type="image/png"> 
+	<title>Letter - Usuario</title>
+</head>
+<body class="cuerpo">
+	<header class=" color h sombra">
+		<nav>
+			<img class="im verticalLine"src="Imagenes/email-icon.png">
+			<button class="boton b3" type="button" onclick = "location.href='index.html'">Cerrar Sesion </button>
+			<img class="im dere2" title="Cuenta de Letter: Greivin Calvo Aguilar - greivindca7@letter.com"src="Imagenes/Avatar.png">
+			<p class="pe">Letter</p>
+			<b class="pe-der">Greivin</b>
+		</nav>
+	</header>
+	<section>
+		<div class="nav">
+				<button class="boton" type="button" onclick = "document.getElementById('light').style.	display='block';document.getElementById('fade').style.display='block'">Redactar </button> </br>
+				<hr>
+			<ul>
+				<li class="a imagenConPieDeTexto seleccionado"><a class="a" selected="selected" href="menuprincipal.html">Salida (3)</a></li>
+				<li class="a imagenConPieDeTexto"><a class="a"href="enviados.html">Enviados (2)</a></li>
+			</ul>
+		</div>
+	</section>
+		 <section class="floatright">
+		 <div class="espacio top">
+		 	<div class="colornuevo sombra2">
+		 	<header class=" header he">
+		 		<div>
+		 			<input class="ta color" type="text" value="Materia" placeholder="Asunto"> 
+		 	</header>
+		 	<hr>
+		 		<div class="div ">
+		 				<input class="ta color" type="text" value="Envio de materia - greivindca7@letter.com<" placeholder="Envia"> 
+	 				<div>
+	 					</br>
+	 					<header>
+	 						<input class="ta color" type="text" value="Se les recuerda por favor estar pendientes a la pagina de la universidad" placeholder="Envia">
+	 					</header>
+	 				</div>
+	 			<div>
+	 				</br>
+	 				<textarea class="tamano3 col" type="text" placeholder="Escribe aqui"> Hola, a todos; en horas de la tarde de mañana se les estara enviando la materia de la clase anterior dada por el profesor favor descargarla apenas puedan </textarea>
+	 			</div>
+	 			</br>
+	 			</div>
+	 				</div>
+	 				<button class="boton b2" type="button" onclick = "location.href='contenido3.html'">Enviar </button>
+	 	 </div>
+	 	 </section>
+		<div id="light" class="popup_content">
+			<section class="posicion derecha2">
+				<header>
+					<nav class="header">
+					<p> <img class="le"src="Imagenes/email-.png">Mensaje Nuevo</p>
+					<a onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'"><img class="dere" title="Cancelar redacción"src="Imagenes/close.png"></a>
+					</nav>
+					</header>
+				<nav class="alinear">
+					<form>
+					<input class="ta" type="text" value="" placeholder="Destinatarios"> 
+					<input class="ta" type="text" value="" placeholder="Asunto"> 
+					<textarea class="tamano3" type="text" value="" placeholder="Redactar"></textarea>
+					</form>
+					<nav class="colorazo pr2">
+					<button class="b2 posicion sombra" type="button" value="cerrar" onclick = "location.href='correonuevo.html'">Enviar </button>
+					</nav>
+				</nav>
+			</section>
+		</div>
+		<div id="fade" class="black_overlay"></div>
+	</body>
+</html>
