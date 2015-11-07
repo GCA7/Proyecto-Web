@@ -2,8 +2,9 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<link rel="stylesheet" href="css/main.css">
 	<link href="Imagenes/email-2-icon.png" rel="shortcut icon" type="image/png"> 
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/main.css">
 	<title>Letter-Registro</title>
 </head>
 <body>
@@ -11,40 +12,45 @@
 	<section class="izquierda">
 		<p>Letter</p>
 		<p>The email app that's simple, smart and beautiful</p>
-	<img src="Imagenes/mail.ico">
+		<img src="Imagenes/mail.ico">
 	</br>
-	</section>
-	<section class="derecha">
+</section>
+<section class="derecha">
+	<form class="form-inline col-md-8 col-md-offset-2" name="form_login"  method="POST">
 		<header><h1>Registro</h1></header>
-			<p class="txt-izq">Nombre: </p>
-				<input type="text" value="" placeholder="Nombre"> 
-				<input type="input" value="" placeholder="Apellidos">
-			<p class="txt-izq">Nombre de usuario: </p>
-				<input class="b" name="email" type="email" placeholder="@letter.com"> 
-			<p class="txt-izq">Contraseña: </p>
-				<input class="tamano" type="password" placeholder="Contraseña"> 
-			<p class="txt-izq">Confirma tu Contraseña: </p>
-				<input class="tamano" type="password" placeholder="Contraseña">
-			<p class="txt-izq">Fecha de Nacimiento: </p>
-				<input class="tamano2" type="text" value="" placeholder="Fecha">
-				<input class="tamano2" type="text" value="" placeholder="Mes">
-				<input class="tamano2" type="text" value="" placeholder="Año">
-			<p class="txt-izq">Sexo: </p>
+		<p class="txt-izq">Nombre: </p>
+		<input class="form-control" type="text" placeholder="FirstName" id="nombre" /> 
+		<input type="text" placeholder="LastName" id="apellido"/>
+		<p class="txt-izq">Nombre de usuario: </p>
+		<input class="b" name="email" type="email" pattern="[^ @]*@[^ @]*" placeholder="@letter.com"> 
+		<p class="txt-izq">Contraseña: </p>
+		<input class="tamano" type="password" placeholder="Contraseña"> 
+		<p class="txt-izq">Confirma tu Contraseña: </p>
+		<input class="tamano" type="password" placeholder="Contraseña">
+		<p class="txt-izq">Fecha de Nacimiento: </p>
+		<input class="tamano2" type="text" value="" placeholder="Fecha">
+		<input class="tamano2" type="text" value="" placeholder="Mes">
+		<input class="tamano2" type="text" value="" placeholder="Año">
+		<p class="txt-izq">Sexo: </p>
 		<select>
-  				<option value="Hombre">Hombre</option>
-  				<option value="Mujer">Mujer</option>
+			<option value="Hombre">Hombre</option>
+			<option value="Mujer">Mujer</option>
 		</select> </br> </br>
 		<form>
-				<p>
-					<input type="checkbox" name="terminos" value="Terminos"/> 
-						Acepto las Condiciones del Servicio 
-						y </br> la Politica de Privacidad de Letter.
-				</p>
+			<p class="text">
+				<input type="checkbox" name="terminos" value="Terminos"/> 
+				Acepto las Condiciones del Servicio 
+				y </br> la Politica de Privacidad de Letter.
+			</p>
 		</form>
-		</br>
-			<button class="boton sombra" type="button" onClick="location.href='index.html'" >Acceder </button> 
-			<button class="boton sombra" type="button" onClick="location.href='index.html'" >Cancelar </button> </br>
-		</section>
-	  </br>
-	</body>
+	</form>
+</br>
+<button id="button-acceder" class="boton sombra" target="_blank" onClick="location.href=''" >Acceder </button> 
+<button class="boton sombra" type="button" onClick="location.href='index.html'" >Cancelar </button> </br>
+</section>
+</br>
+	<script type="text/javascript" src="correo.js"></script>
+	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</body>
 </html>
