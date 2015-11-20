@@ -13,13 +13,14 @@
 	<table class="sombra sombreado" align=center width="100%" cellpadding=80 cellspacing=3 background="Imagenes/banner3-fondo.png" bgcolor="000000" id="animation"> 
 		<tr >
 			<th class="cabecera">
-				<button class="boton" type="button" onClick="LOGIN.mostrar();">Iniciar Sesion </button>
-				<button class="boton" type="button" onClick="location.href='registro.html'">Registrarse </button>
+				<button class="boton" type="button" onClick="LOGIN.mostrar();" id="btnsesion">Iniciar Sesion </button>
+				<button class="boton" type="button" onClick="location.href='registro.html'" id="btnregistro">Registrarse </button>
 			</th>
 		</tr>
+		<nav id="oculto" class="ocultar">
 		<section class="centrar container espacio col">
 			<form name="form_login" method="POST" class="">
-				<div class="container animated zoomIn ocultar" id="oculto">
+				<div class="container animated zoomIn">
 					<div class="row">
 						<div class="col-sm-6 col-md-4 col-md-offset-4">
 							<h1 class="text-center login-title">Sign in to Letter</h1>
@@ -27,9 +28,9 @@
 								<img class="profile-img" src="Imagenes/email-icon.png"
 								alt=""></br
 								<form class="form-signin">
-									<input type="text" class="form-control" placeholder="Email" required autofocus>
-									<input type="password" class="form-control" placeholder="Password" required>
-									<button class="btn btn-lg btn-primary btn-block" type="submit">
+									<input type="text" class="form-control" placeholder="Email" required autofocus id="email">
+									<input type="password" class="form-control" placeholder="Password" required id="contrasena">
+									<button class="btn btn-lg btn-primary btn-block" type="submit" Onclick="LOGIN.Login();">
 										Sign in</button>
 									</form>
 								</div>
@@ -40,6 +41,7 @@
 				</form>
 			</br>
 			</section>
+			</nav>
 			<tr class=""> 
 				<td> 
 					<font size=2 face="arial,verdana" color="#ffffff"> 
