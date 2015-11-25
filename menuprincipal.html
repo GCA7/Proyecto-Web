@@ -2,87 +2,105 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<link rel="stylesheet" href="css/main.css">
 	<link href="Imagenes/email-2-icon.png" rel="shortcut icon" type="image/png"> 
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<link rel="stylesheet" href="css/animate.css">
+	<link rel="stylesheet" href="css/main.css">
 	<title>Letter - Usuario</title>
 </head>
-<body class="cuerpo">
-			<header class=" color h sombra">
-					<nav>
-						<img class="im verticalLine"src="Imagenes/email-icon.png">
-						<button class="boton b3" type="button" onclick = "location.href='index.html'">Cerrar Sesion </button>
-						<img class="im dere2" title="Cuenta de Letter: Greivin Calvo Aguilar - greivindca7@letter.com"src="Imagenes/Avatar.png">
-						<p class="pe">Letter</p>
-						<b class="pe-der">Greivin</b>
-					</nav>
-			</header>
+<body onload="" class="cuerpo">
+	<header class=" color h sombra">
+		<nav>
+			<img class="im verticalLine"src="Imagenes/email-icon.png">
+			<button class="boton b3" type="button" onclick = "location.href='index.html'">Cerrar Sesion </button>
+			<img class="im dere2" title="Cuenta de Letter: Greivin Calvo Aguilar - greivindca7@letter.com"src="Imagenes/Avatar.png">
+			<p id="nomuser"></p>
+			<p class="pe">Letter</p>
+			<p id="username" class="pe" value=""></p>
+		</nav>
+	</header>
 	<section>
-			<div class="nav">
-				<button class="boton" type="button" onclick = "document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'">Redactar </button> </br>
-				 <hr>
-					<ul>
-						<li class="a imagenConPieDeTexto seleccionado"><a class="a" selected="selected" href="">Salida (3)</a></li>
-						<li class="a imagenConPieDeTexto"><a class="a"href="enviados.html">Enviados (2)</a></li>
-					</ul>
-			</div>
-		 <nav class="floatright">
-		 		<p class="hoy salto">Hoy</p>
-		 			<div class="dere">
-		 				<a value="Actualizar Página" onclick="window.location.reload()"><img title="Recargar la página"  src="Imagenes/reload.png"></a>
-		 				<a href="Eliminartodos.html">
-		 		 		<img title="Eliminar todos los correos sin marcar"src="Imagenes/clear.png">
-		 				</a>
-		 			</div>
-		 		<hr>
-	 	<div class=" verticalLine3">
-	 			<div class="nave pr2 imagenConPieDeTexto sombra " onClick="location.href='contenido.html'">&nbsp;
-	 				<p class="text" style="color:black">Fiesta</p>
-	 				<p class="text" style="color:gray"> -Confirmacion de fiesta</p>
-					 <a href="eliminar.html" title="Elimiar correo">
-	 				<img class="im linea paddingr"src="Imagenes/trash.png">
-	 				 </a>
-	 				 <b class="linea">10:23</b>
-	 			</div>
-	 	</div>
-	 		<div class="nave pr2 imagenConPieDeTexto sombra " onClick="location.href='contenido2.html'">&nbsp;
-	 			 	<p class="text" style="color:black">Universidad Tecnica N.</p>
-	 			 	<p class="text" style="color:gray">-Solicitud de beca socioeconomica...</p>
-	 			    <a href="eliminar.html" title="Elimiar 
-	 			    correo">
-	 				<img class="im linea paddingr"src="Imagenes/trash.png">
-	 				 </a>
-	 		 		 <b class="linea">08:30</b>
-	 		</div>
-	 		<div class="nave pr2 imagenConPieDeTexto sombra " onClick="location.href='contenido3.html'">&nbsp;
-	 				 <p class="text" style="color:black">Materia</p>
-	 				 <p class="text" style="color:gray">-Contenido de la materia.</p>
-	 			    <a href="eliminar.html" title="Elimiar correo" >
-	 				<img class="im linea paddingr"src="Imagenes/trash.png">
-	 		 		</a>
-	 			    <b class="linea">12:03</b>
-	 		</div>
-	 	</nav>
-	</section>
-		<div id="light" class="popup_content">
-			<section class="posicion derecha2">
-				<header>
-					<nav class="header">
-					<p> <img class="le"src="Imagenes/email-.png">Mensaje Nuevo</p>
-					<a onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'"><img class="dere" title="Cancelar redacción"src="Imagenes/close.png"></a>
-					</nav>
-					</header>
-				<nav class="alinear">
-					<form>
-					<input class="ta" type="text" value="" placeholder="Destinatarios"> 
-					<input class="ta" type="text" value="" placeholder="Asunto"> 
-					<textarea class="tamano3" type="text" value="" placeholder="Redactar"></textarea>
-					</form>
-					<nav class="colorazo pr2">
-					<button class="b2 posicion sombra" type="button" value="cerrar" onclick = "location.href='correonuevo.html'">Enviar </button>
-					</nav>
-				</nav>
-			</section>
+		<div class="nav">
+			<button type="button" class="" id="redactar" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">Redactar</button> </br>
+			<hr>
+			<ul>
+				<li class="a imagenConPieDeTexto seleccionado"><a class="a" selected="selected" href="">Salida</a><span class="badge">3</span></li>
+				<li class="a imagenConPieDeTexto"><a class="a"href="enviados.html">Enviados</a><span class="badge">2</span></li>
+			</ul>
 		</div>
-		<div id="fade" class="black_overlay"></div>
+		<nav class="floatright">
+			<p class="hoy salto">Hoy</p>
+			<div class="dere">
+				<a value="Actualizar Página" onclick="window.location.reload()"><img title="Recargar la página"  src="Imagenes/reload.png"></a>
+				<a href="Eliminartodos.html">
+					<img title="Eliminar todos los correos sin marcar"src="Imagenes/clear.png">
+				</a>
+			</div>
+			<hr>
+			<section>
+			   <form id="correo">
+				<div class=" verticalLine3">
+					<div class=" nave panel panel-default imagenConPieDeTexto sombra row-fluid" onClick="location.href='contenido.html'" id="correo1">&nbsp;
+						<span id="asunto" class="text" style="color:black">Fiesta</span>
+						<span id="contenido"class="text" style="color:gray"> -Confirmacion de fiesta</span>
+						<span class="linea">10:23</span>
+					</div>
+				</div>
+			   </form>	
+				<div class="nave panel panel-default imagenConPieDeTexto sombra" id="correo2" onClick="location.href='contenido2.html'">&nbsp;
+					<span class="text" style="color:black">Universidad Tecnica N.</span>
+					<span class="text" style="color:gray">-Solicitud de beca socioeconomica...</span>
+					<a href="eliminar.html" title="Elimiar 
+					correo">
+					<img class="im linea paddingr"src="Imagenes/trash.png">
+				</a>
+				<span class="linea">08:30</span>
+			</div>
+			<div class="nave panel panel-default imagenConPieDeTexto sombra" id="correo3" onClick="location.href='contenido3.html'">&nbsp;
+				<span class="text" style="color:black">Materia</span>
+				<span class="text" style="color:gray">-Contenido de la materia.</span>
+				<a href="eliminar.html" title="Elimiar correo" >
+					<img class="im linea paddingr"src="Imagenes/trash.png">
+				</a>
+				<span class="linea">12:03</span>
+			</div>
+		</section>
+	</nav>
+</section>
+<div class="modal animated fadeInUp arr" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="exampleModalLabel">New message</h4>
+			</div>
+			<div class="modal-body">
+				<form id="emisor" name="form_redactar">
+					<div class="form-group">
+						<label for="recipient-name" class="control-label"></label>
+						<input type="text" class="form-control" id="paramsj" placeholder="Para:">
+					</div>
+					<div class="form-group">
+						<label for="recipient-name" class="control-label"></label>
+						<input type="text" class="form-control" id="asuntomsj" placeholder="Asunto:">
+					</div>
+					<div class="form-group">
+						<label for="message-text" class="control-label"></label>
+						<textarea class="form-control" id="contenidomsj" placeholder="Message:"></textarea>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal" onClick="LOGIN.salidaguardado();">Save Message</button>
+				<button type="button" class="btn btn-primary" onClick="LOGIN.enviadosguardado();">Send message</button>
+			</div>
+		</div>
+	</div>
+</div>
+	<script type="text/javascript" src="js/correo.js"></script>
+	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </body>
 </html>
