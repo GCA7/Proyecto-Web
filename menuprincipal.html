@@ -10,13 +10,24 @@
 	<link rel="stylesheet" href="css/main.css">
 	<title>Letter - Usuario</title>
 </head>
-<body onload="LOGIN.cargarcorreos();" class="cuerpo">
+<body onload="LOGIN.cargarcorreosenviados(); LOGIN.cargarcorreos(); LOGIN.fecha();" class="cuerpo">
 	<header class=" color h sombra">
 		<nav>
 			<img class="im verticalLine"src="Imagenes/email-icon.png">
 			<button class="boton b3" type="button" onclick = "location.href='index.html'">Cerrar Sesion </button>
+			<div class="dropdown">
+				<button class="btn btn-default dropdown-toggle b3" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+					<span class="glyphicon glyphicon-off"></span>
+					<span class="caret b3"></span>
+				</button>
+				<ul class="dropdown-menu" aria-labelledby="dropdownMenu4">
+					<li><a href="#">Regular link</a></li>
+					<li class="disabled"><a href="#">Disabled link</a></li>
+					<li><a href="#">Another link</a></li>
+				</ul>
+			</div>
 			<img class="im dere2" title="Cuenta de Letter: Greivin Calvo Aguilar - greivindca7@letter.com"src="Imagenes/Avatar.png">
-			<p id="nomuser"></p>
+			<p class="der2 visible-desktop visible-tablet" id="nomuser"></p>
 			<p class="pe">Letter</p>
 			<p id="username" class="pe" value=""></p>
 		</nav>
@@ -26,12 +37,12 @@
 			<button type="button" class="" id="redactar" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">Redactar</button> </br>
 			<hr>
 			<ul>
-				<li class="a imagenConPieDeTexto seleccionado"><a class="a" selected="selected" href="">Salida</a><span class="badge">3</span></li>
-				<li class="a imagenConPieDeTexto"><a class="a"href="enviados.html">Enviados</a><span class="badge">2</span></li>
+				<li class="a imagenConPieDeTexto seleccionado"><a class="a" selected="selected" onClick="LOGIN.cargarcorreos();">Salida</a><span class="badge" id="icorreos"></span></li>
+				<li class="a imagenConPieDeTexto"><a class="a" onClick="LOGIN.cargarcorreosenviados();">Enviados</a><span class="badge" id="ienviados"></span></li>
 			</ul>
 		</div>
 		<nav class="floatright">
-			<p class="hoy salto">Hoy</p>
+			<p id="fecha" class="hoy salto">Hoy</p>
 			<div class="dere">
 				<a value="Actualizar Página" onclick="window.location.reload()"><img title="Recargar la página"  src="Imagenes/reload.png"></a>
 				<a href="Eliminartodos.html">
@@ -39,16 +50,16 @@
 				</a>
 			</div>
 			<hr>
-			<section>
-			   <form id="correo">
-				<div class=" verticalLine3">
-					<div class=" nave panel panel-default imagenConPieDeTexto sombra row-fluid" onClick="location.href='contenido.html'" id="correo1">&nbsp;
-						<span id="asunto" class="text" style="color:black">Fiesta</span>
-						<span id="contenido"class="text" style="color:gray"> -Confirmacion de fiesta</span>
-						<span class="linea">10:23</span>
+			<section id="correos_borrados">
+				<form id="correo">
+					<div class=" verticalLine3">
+						<div class=" nave panel panel-default imagenConPieDeTexto sombra row-fluid" onClick="location.href='contenido.html'" id="correo1">&nbsp;
+							<span id="asunto" class="text" style="color:black">Fiesta</span>
+							<span id="contenido"class="text" style="color:gray"> -Confirmacion de fiesta</span>
+							<span class="linea">10:23</span>
+						</div>
 					</div>
-				</div>
-			   </form>	
+				</form>	
 				<div class="nave panel panel-default imagenConPieDeTexto sombra" id="correo2" onClick="location.href='contenido2.html'">&nbsp;
 					<span class="text" style="color:black">Universidad Tecnica N.</span>
 					<span class="text" style="color:gray">-Solicitud de beca socioeconomica...</span>
@@ -69,7 +80,7 @@
 		</section>
 	</nav>
 </section>
-<div class="modal animated fadeInUp arr" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+<div class="modal animated fadeInUp arr" keyboard: "false" data-keyboard="false" data-backdrop="static" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -93,14 +104,14 @@
 				</form>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal" onClick="LOGIN.salidaguardado();">Save Message</button>
-				<button type="button" class="btn btn-primary" onClick="LOGIN.enviadosguardado();">Send message</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal" onClick="LOGIN.salidaguardado(); LOGIN.cargarcorreos();">Save Message</button>
+				<button type="button" class="btn btn-primary" onClick="LOGIN.enviadosguardado(); LOGIN.cargarcorreosenviados();">Send message</button>
 			</div>
 		</div>
 	</div>
 </div>
-	<script type="text/javascript" src="js/correo.js"></script>
-	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/correo.js"></script>
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </body>
 </html>
