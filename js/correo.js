@@ -190,14 +190,16 @@ var LOGIN=LOGIN||
   bandeborrador = JSON.parse(localStorage.getItem("Borradores"));
   user = JSON.parse(localStorage.getItem("Online")).online;
   var cont=0;
+  if(bandeborrador!=null){
   for (var i = 0; i < bandeborrador.length; i++) { 
     var c = bandeborrador[i];  
+    if(c!=null){
     if(bandeborrador[i].User===user){
       cont=cont+1;
       if(bandeborrador.length!=null){
         user_html = user_html + "<div onClick=' LOGIN.contoculto("+i+");' id="+i+" class=' mostrar nave panel panel-default imagenConPieDeTexto sombra row-fluid' >"+"<span class= 'glyphicon glyphicon-envelope'>"+"</span>"+"<span id='corrasun' class='text' style='color:black' >"+c.asunto+"&nbsp;"+"</span>"+
-       "<span id='corrcont' class='text' style='color:gray'>" +"-"+ c.contenido+"</span>"+"<span id='trash' class='glyphicon glyphicon-trash' style='float:right' onClick='eliminarcorreo();'></span>"+"<nav><div id="+"C"+i+"></div></nav>"+
-       "<div id="+"M"+i+" class='ocultar'class='pr colocar'><div ><div class=colornuevo sombra2>"+
+       "<span id='corrcont' class='text' style='color:gray' maxlength='10'>" +"-"+ c.contenido+"</span>"+"<span id='trash' class='glyphicon glyphicon-trash' style='float:right' onClick='LOGIN.eliminarcorreoborrador("+i+");'></span>"+"<nav><div id="+"C"+i+"></div></nav>"+
+       "<div id="+"M"+i+" class='ocultar 'class='pr colocar'><div ><div class='animated fadeIn colornuevo sombra2'>"+
        "<header class=he><div><p class=txt izq>"+c.asunto+"</p><div class=>"+
        "<a title=Eliminar correo>"+
        "<img class='padding' title='Responder mensaje' src='Imagenes/responder.png'><a/>"+
@@ -211,28 +213,45 @@ var LOGIN=LOGIN||
     $('#correos_borrados').html(user_html);
 
   }
+}else{
+  user_html = user_html + "<nav class='bandeja'>"+"<p class='hoy salto'>"+"Aca se mostraran tus mensajes que se encuentran en borrador"+"</p>"+"</nav>";
+}
+}
+user_html = user_html + "<nav class='bandeja'>"+"<p class='hoy salto'>"+"Aca se mostraran tus mensajes que se encuentran en borrador"+"</p>"+"</nav>";
 }
 $('#icorreos').html(cont);
 
 },fecha:function(){
   debugger;
-  var f = new Date();
-  document.write(f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear());
-  $('#fecha').html(f);
+  var hoy = new Date();
+  var dd = hoy.getDate();
+  var mm = hoy.getMonth()+1; //hoy es 0!
+  var yyyy = hoy.getFullYear();
+
+  $('#fecha').html(dd+"/"+mm+"/"+yyyy);
 
 },cargarcorreosenviados:function(){
  debugger;
  var user_html = "";
  bandenviados = JSON.parse(localStorage.getItem("Enviados"));
  user = JSON.parse(localStorage.getItem("Online")).online;
+ $('#nomuser').html(user);
  var contador=0;
  for (var i = 0; i < bandenviados.length; i++) { 
   var e = bandenviados[i];  
   if(bandenviados[i].User===user){
     var contador=contador+1;
     if(bandenviados.length!=null){
-      user_html = user_html +"<div onClick='LOGIN.mostrarcontenido("+i+");' id="+i+" class='mostrar nave panel panel-default imagenConPieDeTexto sombra row-fluid' >"+"<span class= 'glyphicon glyphicon-envelope'>"+"</span>"+"<span class='text' style='color:black' >"+e.asunto+"&nbsp;"+"</span>"+
-      "<span class='text' style='color:gray'>" +"-"+ e.contenido+"</span>"+"<span id='trash' class='glyphicon glyphicon-trash' style='float:right' onClick='eliminarcorreo();'></span>"+"<div id="+"C"+i+"></div></div>"
+       user_html = user_html + "<div onClick=' LOGIN.contoculto("+i+");' id="+i+" class=' mostrar nave panel panel-default imagenConPieDeTexto sombra row-fluid' >"+"<span class= 'glyphicon glyphicon-envelope'>"+"</span>"+"<span id='corrasun' class='text' style='color:black' >"+e.asunto+"&nbsp;"+"</span>"+
+       "<span id='corrcont' class='text' style='color:gray' maxlength='10'>" +"-"+ e.contenido+"</span>"+"<span id='trash' class='glyphicon glyphicon-trash' style='float:right' onClick='eliminarcorreo("+i+");'></span>"+"<nav><div id="+"E"+i+"></div></nav>"+
+       "<div id="+"M"+i+" class='ocultar'class='pr colocar'><div ><div class= 'colornuevo class='animated fadeIn sombra2'>"+
+       "<header class=he><div><p class=txt izq>"+e.asunto+"</p><div class=>"+
+       "<a title=Eliminar correo>"+
+       "<img class='padding' title='Responder mensaje' src='Imagenes/responder.png'><a/>"+
+       "<a href='editar.html' title=Eliminar correo><img class='padding' title='Editar mensaje' src='Imagenes/edit.png'>"+
+       "<a/><a href='eliminar.html' title='Eliminar correo'><img class='padding' src='Imagenes/trash.png'><a/>"
+       +"</div></div></header><hr>"+ "<div class='div'><p class='txt-izq'>"+e.para+"</p>"+"<div>"+"<header>" + e.asunto +"</header>"+"</div><div>"+"<p class='contenido'>"+e.contenido+"</p>"+"</div>"+"</div>"
+       +"</div></div></div>"+"</div>"
     }else{
       user_html = user_html + "<nav class='bandeja'>"+"<p class='hoy salto'>"+"Aca se mostraran tus mensajes que se encuentran en borrador"+"</p>"+"</nav>";
     }
@@ -245,13 +264,13 @@ $('#ienviados').html(contador);
 },mostrarcontenido:function(aidi){
   debugger;
   var enviado_html = "";
-  this,aidi=aidi;
+  this.aidi=aidi;
   salida= JSON.parse(localStorage.getItem("Borradores"));
   for (var i = 0; i < salida.length; i++) {
     if(i===aidi){
       var maniacs="C"+i;
       var mos=salida[i];
-      enviado_html = enviado_html +"<div nav id="+"M"+i+" class='ocultar'class='pr colocar'><div ><div class=colornuevo sombra2>"+
+      borrador_html = borrador_html +"<div nav id="+"M"+i+" class='ocultar'class='pr colocar animated fadeOutDown'><div ><div class=colornuevo sombra2>"+
       "<header class=he><div><p class=txt izq>"+mos.asunto+"</p><div class=>"+
       "<a onclick=document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block' title=Eliminar correo>"+
       "<img class='padding' title='Responder mensaje' src='Imagenes/responder.png'><a/>"+
@@ -261,16 +280,55 @@ $('#ienviados').html(contador);
       +"</div></div></div>";
     }
   }
-  document.getElementById(maniacs).innerHTML=enviado_html;
+  document.getElementById(maniacs).innerHTML=borrador_html;
+
+},mostrarcontenidoenviados:function(aid){
+  debugger;
+  var enviado_html = "";
+  this.aid=aid;
+  enviado= JSON.parse(localStorage.getItem("Enviados"));
+  for (var i = 0; i < enviado.length; i++) {
+    if(i===aid){
+      var mani="E"+i;
+      var envi=enviado[i];
+      enviado_html = enviado_html +"<div nav id="+"M"+i+" class='ocultar'class='pr colocar'><div ><div class=colornuevo sombra2>"+
+      "<header class=he><div><p class=txt izq>"+envi.asunto+"</p><div class=>"+
+      "<a onclick=document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block' title=Eliminar correo>"+
+      "<img class='padding' title='Responder mensaje' src='Imagenes/responder.png'><a/>"+
+      "<a href='editar.html' title=Eliminar correo><img class='padding' title='Editar mensaje' src='Imagenes/edit.png'>"+
+      "<a/><a href='eliminar.html' title='Eliminar correo'><img class='padding' src='Imagenes/trash.png'><a/>"
+      +"</div></div></header><hr>"+ "<div class='div'><p class='txt-izq'>"+envi.para+"</p>"+"<div>"+"<header>" + envi.asunto +"</header>"+"</div><div>"+"<p class='contenido'>"+envi.contenido+"</p>"+"</div>"+"</div>"
+      +"</div></div></div>";
+    }
+  }
+  document.getElementById(mani).innerHTML=enviado_html;
 
 },contoculto:function(aidi2){
   debugger;
+
   var culto="M"+aidi2;
   document.getElementById(culto).style.display = 'block';
-  document.getElementById('corrcont').style.display = 'none';
-  document.getElementById('corrasun').style.display = 'none';
+  //document.getElementById(culto).style.display = 'none';
+  //document.getElementById('corrcont').style.display = 'none';
+  //document.getElementById('corrasun').style.display = 'none';
+  
 
 
+},eliminarcorreoborrador:function(ec){
+   debugger;
+  var enviado_html = "";
+  var bor=new Array();
+  this.ec=ec;
+  borrarbo= JSON.parse(localStorage.getItem("Borradores"));
+  for (var i = 0; i < borrarbo.length; i++) {
+     if(i===ec){
+      localStorage.removeItem(borrarbo[i]);
+     }else{
+      var bor=borrarbo[i];
+     localStorage.setItem("Borradores",JSON.stringify(bor));
+     }
+}
+LOGIN.cargarcorreos();
 }
 
 };
