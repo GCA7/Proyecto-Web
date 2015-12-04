@@ -203,7 +203,7 @@ var LOGIN=LOGIN||
        "<header class=he><div><p class=txt izq>"+c.asunto+"</p><div class=>"+
        "<a title=Eliminar correo>"+
        "<img class='padding' title='Responder mensaje' src='Imagenes/responder.png'><a/>"+
-       "<a href='editar.html' title=Eliminar correo><img class='padding' title='Editar mensaje' src='Imagenes/edit.png'>"+
+       "<a onclick='LOGIN.editarcorreoborrador("+i+");' title=Eliminar correo><img class='padding' title='Editar mensaje' src='Imagenes/edit.png'>"+
        "<a/><a href='eliminar.html' title='Eliminar correo'><img class='padding' src='Imagenes/trash.png'><a/>"
        +"</div></div></header><hr>"+ "<div class='div'><p class='txt-izq'>"+c.para+"</p>"+"<div>"+"<header>" + c.asunto +"</header>"+"</div><div>"+"<p class='contenido'>"+c.contenido+"</p>"+"</div>"+"</div>"
        +"</div></div></div>"+"</div>"
@@ -235,15 +235,15 @@ $('#icorreos').html(cont);
  var user_html = "";
  bandenviados = JSON.parse(localStorage.getItem("Enviados"));
  user = JSON.parse(localStorage.getItem("Online")).online;
- $('#nomuser').html(user);
  var contador=0;
+ if(bandenviados!=null){
  for (var i = 0; i < bandenviados.length; i++) { 
   var e = bandenviados[i];  
   if(bandenviados[i].User===user){
     var contador=contador+1;
     if(bandenviados.length!=null){
        user_html = user_html + "<div onClick=' LOGIN.contoculto("+i+");' id="+i+" class=' mostrar nave panel panel-default imagenConPieDeTexto sombra row-fluid' >"+"<span class= 'glyphicon glyphicon-envelope'>"+"</span>"+"<span id='corrasun' class='text' style='color:black' >"+e.asunto+"&nbsp;"+"</span>"+
-       "<span id='corrcont' class='text' style='color:gray' maxlength='10'>" +"-"+ e.contenido+"</span>"+"<span id='trash' class='glyphicon glyphicon-trash' style='float:right' onClick='eliminarcorreo("+i+");'></span>"+"<nav><div id="+"E"+i+"></div></nav>"+
+       "<span id='corrcont' class='text' style='color:gray' maxlength='10'>" +"-"+ e.contenido+"</span>"+"<span id='trash' class='glyphicon glyphicon-trash' style='float:right' onClick='LOGIN.eliminarcorreoenviados("+i+");'></span>"+"<nav><div id="+"E"+i+"></div></nav>"+
        "<div id="+"M"+i+" class='ocultar'class='pr colocar'><div ><div class= 'colornuevo class='animated fadeIn sombra2'>"+
        "<header class=he><div><p class=txt izq>"+e.asunto+"</p><div class=>"+
        "<a title=Eliminar correo>"+
@@ -259,6 +259,7 @@ $('#icorreos').html(cont);
 
   }
 }
+}
 $('#ienviados').html(contador);
 
 },mostrarcontenido:function(aidi){
@@ -270,7 +271,7 @@ $('#ienviados').html(contador);
     if(i===aidi){
       var maniacs="C"+i;
       var mos=salida[i];
-      borrador_html = borrador_html +"<div nav id="+"M"+i+" class='ocultar'class='pr colocar animated fadeOutDown'><div ><div class=colornuevo sombra2>"+
+      borrador_html = borrador_html +"<div id="+"M"+i+" class='ocultar pr colocar animated fadeOutDown'><div ><div class=colornuevo sombra2>"+
       "<header class=he><div><p class=txt izq>"+mos.asunto+"</p><div class=>"+
       "<a onclick=document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block' title=Eliminar correo>"+
       "<img class='padding' title='Responder mensaje' src='Imagenes/responder.png'><a/>"+
@@ -291,11 +292,11 @@ $('#ienviados').html(contador);
     if(i===aid){
       var mani="E"+i;
       var envi=enviado[i];
-      enviado_html = enviado_html +"<div nav id="+"M"+i+" class='ocultar'class='pr colocar'><div ><div class=colornuevo sombra2>"+
+      enviado_html = enviado_html +"<div id="+"M"+i+" class='ocultar pr colocar'><div ><div class=colornuevo sombra2>"+
       "<header class=he><div><p class=txt izq>"+envi.asunto+"</p><div class=>"+
       "<a onclick=document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block' title=Eliminar correo>"+
       "<img class='padding' title='Responder mensaje' src='Imagenes/responder.png'><a/>"+
-      "<a href='editar.html' title=Eliminar correo><img class='padding' title='Editar mensaje' src='Imagenes/edit.png'>"+
+      "<a onclick='' title=Eliminar correo><img class='padding' title='Editar mensaje' src='Imagenes/edit.png'>"+
       "<a/><a href='eliminar.html' title='Eliminar correo'><img class='padding' src='Imagenes/trash.png'><a/>"
       +"</div></div></header><hr>"+ "<div class='div'><p class='txt-izq'>"+envi.para+"</p>"+"<div>"+"<header>" + envi.asunto +"</header>"+"</div><div>"+"<p class='contenido'>"+envi.contenido+"</p>"+"</div>"+"</div>"
       +"</div></div></div>";
@@ -316,19 +317,56 @@ $('#ienviados').html(contador);
 
 },eliminarcorreoborrador:function(ec){
    debugger;
-  var enviado_html = "";
   var bor=new Array();
   this.ec=ec;
   borrarbo= JSON.parse(localStorage.getItem("Borradores"));
   for (var i = 0; i < borrarbo.length; i++) {
-     if(i===ec){
-      localStorage.removeItem(borrarbo[i]);
-     }else{
-      var bor=borrarbo[i];
-     localStorage.setItem("Borradores",JSON.stringify(bor));
+     if(i===ec&&borrarbo.length===1){
+      localStorage.removeItem("Borradores");
      }
-}
-LOGIN.cargarcorreos();
+      if(i==ec){
+
+  }else{
+    var bora={'User':borrarbo[i].User,'para':borrarbo[i].para,'asunto':borrarbo[i].asunto,'contenido':borrarbo[i].contenido};
+      bor.push(bora);
+      localStorage.removeItem("Borradores");
+     localStorage.setItem("Borradores",JSON.stringify(bor));
+   }
+     }
+
+     LOGIN.cargarcorreos();
+},eliminarcorreoenviados:function(ec){
+   debugger;
+  var bor=new Array();
+  this.ec=ec;
+  borrarbo= JSON.parse(localStorage.getItem("Enviados"));
+  for (var i = 0; i < borrarbo.length; i++) {
+     if(i===ec&&borrarbo.length===1){
+      localStorage.removeItem("Enviados");
+     }
+      if(i==ec){
+
+  }else{
+    var bora={'User':borrarbo[i].User,'para':borrarbo[i].para,'asunto':borrarbo[i].asunto,'contenido':borrarbo[i].contenido};
+      bor.push(bora);
+      localStorage.removeItem("Enviados");
+     localStorage.setItem("Enviados",JSON.stringify(bor));
+   }
+     }
+
+     LOGIN.cargarcorreos();
+
+},cargarnombre:function(){
+   var uuser = JSON.parse(localStorage.getItem("Online")).online;
+ $('#nomuser').html(uuser);
+
+},editarcorreoborrador:function(edit){
+  this.edit=edit;
+  editarcorreo= JSON.parse(localStorage.getItem("Borradores"));
+  for (var i = 0; i < editarcorreo.length; i++) {
+    
+  };
+
 }
 
 };
