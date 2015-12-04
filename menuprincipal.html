@@ -10,7 +10,7 @@
 	<link rel="stylesheet" href="css/main.css">
 	<title>Letter - Usuario</title>
 </head>
-<body onload="LOGIN.cargarcorreosenviados(); LOGIN.cargarcorreos(); LOGIN.fecha();" class="cuerpo">
+<body onload="LOGIN.cargarcorreosenviados(); LOGIN.cargarcorreos(); LOGIN.fecha(); LOGIN.cargarnombre();" class="cuerpo">
 	<header class=" color h sombra">
 		<nav>
 			<img class="im verticalLine"src="Imagenes/email-icon.png">
@@ -37,16 +37,16 @@
 			<button type="button" class="" id="redactar" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">Redactar</button> </br>
 			<hr>
 			<ul>
-				<li class="a imagenConPieDeTexto seleccionado"><a class="a" selected="selected" onClick="LOGIN.cargarcorreos();">Salida</a><span class="badge" id="icorreos"></span></li>
-				<li class="a imagenConPieDeTexto"><a class="a" onClick="LOGIN.cargarcorreosenviados();">Enviados</a><span class="badge" id="ienviados"></span></li>
+				<li class="a imagenConPieDeTexto seleccionado"><span class="glyphicon glyphicon-inbox"></span><a class="a left" selected="selected" onClick="LOGIN.cargarcorreos();">Salida</a><span class="badge left" id="icorreos"></span></li>
+				<li class="a imagenConPieDeTexto"><span class="glyphicon glyphicon-inbox"></span><a class="a left" onClick="LOGIN.cargarcorreosenviados();">Enviados</a><span class="badge left" id="ienviados"></span></li>
 			</ul>
 		</div>
 		<nav class="floatright">
 			<p id="fecha" class="hoy salto">Hoy</p>
 			<div class="dere">
-				<a value="Actualizar Página" onclick="window.location.reload()"><img title="Recargar la página"  src="Imagenes/reload.png"></a>
+				<a value="Actualizar Página" onclick="window.location.reload()"><span title="Recargar la página" class="glyphicon glyphicon-refresh tamano-icon{"> </span></a>
 				<a href="Eliminartodos.html">
-					<img title="Eliminar todos los correos sin marcar"src="Imagenes/clear.png">
+					<span title="Eliminar todos los correos sin marcar" class="glyphicon glyphicon-remove"></span>
 				</a>
 			</div>
 			<hr>
