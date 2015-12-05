@@ -14,19 +14,8 @@
 	<header class=" color h sombra">
 		<nav>
 			<img class="im verticalLine"src="Imagenes/email-icon.png">
-			<button class="boton b3" type="button" onclick = "location.href='index.html'">Cerrar Sesion </button>
-			<div class="dropdown">
-				<button class="btn btn-default dropdown-toggle b3" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-					<span class="glyphicon glyphicon-off"></span>
-					<span class="caret b3"></span>
-				</button>
-				<ul class="dropdown-menu" aria-labelledby="dropdownMenu4">
-					<li><a href="#">Regular link</a></li>
-					<li class="disabled"><a href="#">Disabled link</a></li>
-					<li><a href="#">Another link</a></li>
-				</ul>
-			</div>
-			<img class="im dere2" title="Cuenta de Letter: Greivin Calvo Aguilar - greivindca7@letter.com"src="Imagenes/Avatar.png">
+			<button class="boton b3" type="button" onclick = "location.href='index2.html'">Cerrar Sesion </button>
+			<img class="im dere2" id="imgavatar" title="Cuenta de Letter: Greivin Calvo Aguilar - greivindca7@letter.com"src="Imagenes/Avatar.png">
 			<p class="der2 visible-desktop visible-tablet" id="nomuser"></p>
 			<p class="pe">Letter</p>
 			<p id="username" class="pe" value=""></p>
@@ -34,7 +23,7 @@
 	</header>
 	<section>
 		<div class="nav">
-			<button type="button" class="" id="redactar" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">Redactar</button> </br>
+			<button type="button" class="b2" id="redactar" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">Redactar</button> </br>
 			<hr>
 			<ul>
 				<li class="a imagenConPieDeTexto seleccionado"><span class="glyphicon glyphicon-inbox"></span><a class="a left" selected="selected" onClick="LOGIN.cargarcorreos();">Salida</a><span class="badge left" id="icorreos"></span></li>
@@ -52,66 +41,41 @@
 			<hr>
 			<section id="correos_borrados">
 				<form id="correo">
-					<div class=" verticalLine3">
-						<div class=" nave panel panel-default imagenConPieDeTexto sombra row-fluid" onClick="location.href='contenido.html'" id="correo1">&nbsp;
-							<span id="asunto" class="text" style="color:black">Fiesta</span>
-							<span id="contenido"class="text" style="color:gray"> -Confirmacion de fiesta</span>
-							<span class="linea">10:23</span>
-						</div>
-					</div>
-				</form>	
-				<div class="nave panel panel-default imagenConPieDeTexto sombra" id="correo2" onClick="location.href='contenido2.html'">&nbsp;
-					<span class="text" style="color:black">Universidad Tecnica N.</span>
-					<span class="text" style="color:gray">-Solicitud de beca socioeconomica...</span>
-					<a href="eliminar.html" title="Elimiar 
-					correo">
-					<img class="im linea paddingr"src="Imagenes/trash.png">
-				</a>
-				<span class="linea">08:30</span>
-			</div>
-			<div class="nave panel panel-default imagenConPieDeTexto sombra" id="correo3" onClick="location.href='contenido3.html'">&nbsp;
-				<span class="text" style="color:black">Materia</span>
-				<span class="text" style="color:gray">-Contenido de la materia.</span>
-				<a href="eliminar.html" title="Elimiar correo" >
-					<img class="im linea paddingr"src="Imagenes/trash.png">
-				</a>
-				<span class="linea">12:03</span>
-			</div>
+				</section>
+			</nav>
 		</section>
-	</nav>
-</section>
-<div class="modal animated fadeInUp arr" keyboard: "false" data-keyboard="false" data-backdrop="static" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<h4 class="modal-title" id="exampleModalLabel">New message</h4>
-			</div>
-			<div class="modal-body">
-				<form id="emisor" name="form_redactar">
-					<div class="form-group">
-						<label for="recipient-name" class="control-label"></label>
-						<input type="text" class="form-control" id="paramsj" placeholder="Para:">
+		<div class="modal animated fadeInUp arr" keyboard: "false" data-keyboard="false" data-backdrop="static" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="exampleModalLabel">New message</h4>
 					</div>
-					<div class="form-group">
-						<label for="recipient-name" class="control-label"></label>
-						<input type="text" class="form-control" id="asuntomsj" placeholder="Asunto:">
+					<div class="modal-body">
+						<form id="emisor" name="form_redactar">
+							<div class="form-group">
+								<label for="recipient-name" class="control-label"></label>
+								<input type="text" class="form-control" id="paramsj" placeholder="Para:">
+							</div>
+							<div class="form-group">
+								<label for="recipient-name" class="control-label"></label>
+								<input type="text" class="form-control" id="asuntomsj" placeholder="Asunto:">
+							</div>
+							<div class="form-group">
+								<label for="message-text" class="control-label"></label>
+								<textarea class="form-control" id="contenidomsj" placeholder="Message:"></textarea>
+							</div>
+						</form>
 					</div>
-					<div class="form-group">
-						<label for="message-text" class="control-label"></label>
-						<textarea class="form-control" id="contenidomsj" placeholder="Message:"></textarea>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal" onClick="LOGIN.salidaguardado(); LOGIN.cargarcorreos();">Save Message</button>
+						<button type="button" class="btn btn-primary" onClick="LOGIN.enviadosguardado(); LOGIN.cargarcorreosenviados();">Send message</button>
 					</div>
-				</form>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal" onClick="LOGIN.salidaguardado(); LOGIN.cargarcorreos();">Save Message</button>
-				<button type="button" class="btn btn-primary" onClick="LOGIN.enviadosguardado(); LOGIN.cargarcorreosenviados();">Send message</button>
+				</div>
 			</div>
 		</div>
-	</div>
-</div>
-<script type="text/javascript" src="js/correo.js"></script>
-<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-</body>
-</html>
+		<script type="text/javascript" src="js/correo.js"></script>
+		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	</body>
+	</html>
