@@ -21,14 +21,16 @@
 			<p id="username" class="pe" value=""></p>
 		</nav>
 	</header>
-	<section>
-		<div class="nav">
-			<button type="button" class="b2" id="redactar" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">Redactar</button> </br>
+	<section class="container containertan pr">
+		<div class="nav row pr">
+			<div class="col-md-12">
+			<button type="button" title="Crear correo nuevo" class="b2" id="redactar" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">Redactar</button> </br>
 			<hr>
 			<ul>
 				<li class="a imagenConPieDeTexto seleccionado"><span class="glyphicon glyphicon-inbox"></span><a class="a left" selected="selected" onClick="LOGIN.cargarcorreos();">Salida</a><span class="badge left" id="icorreos"></span></li>
 				<li class="a imagenConPieDeTexto"><span class="glyphicon glyphicon-inbox"></span><a class="a left" onClick="LOGIN.cargarcorreosenviados();">Enviados</a><span class="badge left" id="ienviados"></span></li>
 			</ul>
+		 </div>
 		</div>
 		<nav class="floatright">
 			<p id="fecha" class="hoy salto">Hoy</p>
@@ -39,11 +41,13 @@
 				</a>
 			</div>
 			<hr>
-			<section id="correos_borrados">
-				<form id="correo">
-				</section>
-			</nav>
-		</section>
+			<div class="pr" id="correos_borrados">
+				<div class="row pr">
+					<form id="correo">
+				</div>
+			</div>
+		</nav>
+	</section>
 		<div class="modal animated fadeInUp arr" keyboard: "false" data-keyboard="false" data-backdrop="static" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
