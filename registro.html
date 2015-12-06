@@ -6,6 +6,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<link rel="stylesheet" href="css/animate.css">
 	<link rel="stylesheet" href="css/main.css">
 	<title>Letter-Registro</title>
 </head>
@@ -23,55 +24,42 @@
 				</br>
 			</section>
 			<div class="derecha col-md-6">
-				<form name="form_login" method="POST">
+				<form name="form_registro" method="POST">
 					<header class="pr"><h1>Registro</h1></header> </br>
-					<form>
 						<div class="input-group">
 							<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user"></span></span>
-							<input type="text" class="form-control" placeholder="UserName" aria-describedby="basic-addon1">
+							<input type="text" class="form-control" placeholder="UserName" aria-describedby="basic-addon1" id="usuario" required>
 						</div>
-					</form>
 				</br>
-				<form>
 					<div class="input-group">
-						<input type="text" class="form-control" placeholder="Email" id="email" aria-describedby="basic-addon2">
+						<input type="text" class="form-control" placeholder="Email" id="email" aria-describedby="basic-addon2" required>
 						<span class="input-group-addon" id="basic-addon2">@letter.com</span>
 					</div>
-				</form>
 			</br>
-			<form>
 				<div class="input-group">
 					<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-lock"></span></span>
-					<input type="password" class="form-control" placeholder="Password" id="contrasena" aria-describedby="basic-addon1">
+					<input type="password" class="form-control" placeholder="Password" id="contrasena" aria-describedby="basic-addon1" required>
 				</div>
-			</form>
 		</br>
-		<form>
 			<div class="input-group">
 				<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-calendar"></span></span>
-				<input type="month" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+				<input type="date" class="form-control" placeholder="Username" id="calendar" aria-describedby="basic-addon1">
 			</div>
-		</form>
 	</br>
-	<select class="tamano">
-		<option value="Hombre">Hombre</option>
-		<option value="Mujer">Mujer</option>
+	<select id="sexo" class="tamano">
+		<option  value="Hombre">Hombre</option>
+		<option  value="Mujer">Mujer</option>
 	</select> </br> </br>
-	<form>
 		<p class="text">
-			<form>
 				<input type="checkbox" id="checkterm" name="terminos" value="Terminos"/> 
 				Acepto las Condiciones del Servicio 
 				y la Politica de Privacidad de Letter.
-			</form>
 		</p>
-	</form>
 </br>
 <button class="boton sombra" target="_blank" onClick="LOGIN.guardarUser();" >Acceder </button> 
-<button class="boton sombra" type="button" onClick="location.href='index.html'" >Cancelar </button> </br>
+<button class="boton sombra" type="button" onClick="location.href='index2.html'" >Cancelar </button> </br>
 </form
 </div>
-</br>
 </div>
 </div>
 	<script type="text/javascript" src="js/correo.js"></script>
