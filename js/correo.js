@@ -1,33 +1,34 @@
 var conti=0;
 var conta=0;
+var cambio=true;
+
+
 var LOGIN=LOGIN||
 { 
-		//funcion para guardar un usuario
-		guardarUser:function() {
-			var email = document.getElementById("email").value;
-			var contrasena = document.getElementById("contrasena").value;
-			debugger;
+		//funcion que permite guardar un usuario
+    guardarusuario:function() {
+     var email = document.getElementById("email").value;
+     var contrasena = document.getElementById("contrasena").value;
+     debugger;
 
-			if(!document.getElementById('checkterm').checked){
+     if(!document.getElementById('checkterm').checked){
 
-				alert('No has aceptado los terminos de servicio y privacidad');
-			}else{
+      alert('No has aceptado los terminos de servicio y privacidad');
+    }else{
 
-				LOGIN.validarcampos(form_registro);
-			}
-		},
+      LOGIN.validarcampos(form_registro);
+    }
+  },guardardatos:function(email,contrasena)
+  {
+    //funcion que permite guardar los datos del usuario
+    debugger;
+    this.email=email;
+    this.contrasena=contrasena;
 
-	//funcion para guardar los datos del usuario
-	guardar:function(email,contrasena)
-	{
-		debugger;
-		this.email=email;
-		this.contrasena=contrasena;
 
-       //lo obtiene todo en si
        dato = localStorage.getItem("Login");
 
-       //lo obtiene en objetos 
+
        dato = JSON.parse(localStorage.getItem("Login"));
 
        if(dato==null)
@@ -38,8 +39,8 @@ var LOGIN=LOGIN||
        	datosLogin.push(date);
           //Este es para ser el key del localstorage y le envia un arreglo de objetos		
           localStorage.setItem("Login",JSON.stringify(datosLogin));
-                   window.open("index2.html");
-         window.close("registro.html");
+          window.open("index2.html");
+          window.close("registro.html");
         }else
         {
 
@@ -47,13 +48,12 @@ var LOGIN=LOGIN||
          dato.push(date);
         //Este es para ser el key del localstorage y le envia un arreglo de objetos		
         localStorage.setItem("Login",JSON.stringify(dato));
-                 window.open("index2.html");
-         window.close("registro.html");
+        window.open("index2.html");
+        window.close("registro.html");
       }
-    	//funcion que valida el usuario en el login
 
-    },validar:function(email,contrasena)
-    {
+    },validar:function(email,contrasena){
+      //funcion para validar el usuario
       debugger;
       this.email=email;
       this.contrasena=contrasena;
@@ -72,6 +72,8 @@ var LOGIN=LOGIN||
        }
      }
      alert('[ERROR] Datos incorrectos, favor verificar');
+     document.getElementById("email").value="";
+     document.getElementById("contrasena").value="";
 
 	//valida el usuario
 },Login:function()
@@ -83,16 +85,16 @@ var LOGIN=LOGIN||
 
 	LOGIN.validar(email,contrasena);
 
-	//funcion que muestra el contenido oculto del login
-},mostrar:function()
-{
+},mostrar:function(){
+  //funcion que muestra contenido oculto
   debugger;
   document.getElementById('oculto').style.display = 'block';
   document.getElementById('btnsesion').style.display = 'none';
   document.getElementById('btnregistro').style.display = 'none';
 
-	//funcion para validar que el usuario llene todos los campos exigidos
+	
 },validarcampos:function(){
+  //funcion para validar que el usuario llene todos los campos exigidos
 	debugger;
 	var email = document.getElementById("email").value;
 	var contrasena = document.getElementById("contrasena").value;
@@ -119,16 +121,18 @@ var LOGIN=LOGIN||
 		return false; 
 	} else 
 	{ 
-		LOGIN.guardar(email,contrasena);
+		LOGIN.guardardatos(email,contrasena);
 	} 
 
 },useronline:function(){
+  //funcion que guarda el usuario que se acaba de loguear
   debugger;
   var ptoconectado = document.getElementById("email").value;
   var enlinea={'online':ptoconectado};
   localStorage.setItem("Online",JSON.stringify(enlinea));
 
 },salidaguardado:function(){
+  //funcion para guardar los mensajes de la bandeja de salida
   debugger;
   var destinatario = document.getElementById("paramsj").value;
   var asunto = document.getElementById("asuntomsj").value;
@@ -152,6 +156,7 @@ var LOGIN=LOGIN||
   
 
 },validarlightbox:function(){
+  //funcion para validar que el lightbox lleve todos sus campos llenos
   debugger;
   var para = document.getElementById("paramsj").value;
   var asunto = document.getElementById("asuntomsj").value;
@@ -167,6 +172,7 @@ var LOGIN=LOGIN||
   $("#redactar").click();
 
 },enviadosguardado:function(){
+  //funcion para guardar los correos de la bandeja de enviados
  debugger;
  var destinatario = document.getElementById("paramsj").value;
  var asunto = document.getElementById("asuntomsj").value;
@@ -189,6 +195,7 @@ var LOGIN=LOGIN||
 
 }
 },cargarcorreos:function(){
+  //funcion que carga los correos cada vez que el usuario se loguea
   debugger;
   var user_html = "";
   bandeborrador = JSON.parse(localStorage.getItem("Borradores"));
@@ -197,34 +204,34 @@ var LOGIN=LOGIN||
   if(bandeborrador!=null){
     for (var i = 0; i < bandeborrador.length; i++) { 
       var c = bandeborrador[i];  
-        if(bandeborrador[i].User===user){
-          cont=cont+1;
-          if(bandeborrador.length!=null){
-            user_html = user_html + "<div id="+i+" class=' mostrar nave panel panel-default imagenConPieDeTexto sombra' >"+"<div onClick=' LOGIN.contoculto("+i+");'><span class= 'glyphicon glyphicon-envelope'>"+"</span>"+"<span id='corrasun' class='text' style='color:black' >"+c.asunto+"&nbsp;"+"</span>"+
-            "<span id='corrcont' class='text' style='color:gray' maxlength='10'>" +"-"+ c.contenido+"</span>"+"<span id='trash' class='glyphicon glyphicon-trash' style='float:right' onClick='LOGIN.eliminarcorreoborrador("+i+");'></span></div>"+"<nav><div id="+"C"+i+"></div></nav>"+
-            "<div id="+"M"+i+" class='ocultar 'class='pr colocar'><div ><div class='animated fadeIn colornuevo sombra2'>"+
-            "<header class=he><div><p class=txt izq>"+c.asunto+"</p><div class=>"+
-            "<a title=Eliminar correo>"+
-            "<img class='padding' title='Responder mensaje' src='Imagenes/responder.png'><a/>"+
-            "<a onclick='LOGIN.editarcorreoborrador("+i+");' ><img class='padding' title='Editar mensaje' src='Imagenes/edit.png'>"+
-            "<a/><a onclick='LOGIN.eliminarcorreoborrador();' title='Eliminar correo'><img class='padding' src='Imagenes/trash.png'><a/>"
-            +"</div></div></header><hr>"+ "<div class='div'><p class='txt-izq'>"+c.para+"</p>"+"<div>"+"<header>" + c.asunto +"</header>"+"</div><div>"+"<p class='contenido'>"+c.contenido+"</p>"+"</div>"+"</div>"
-            +"</div></div></div>"+"</div>"
-          }else{
-            user_html = user_html + "<nav class='bandeja'>"+"<p class='hoy salto'>"+"Aca se mostraran tus mensajes que se encuentran en borrador"+"</p>"+"</nav>";
-          }
-          $('#correos_borrados').html(user_html);
-          $('#icorreos').html(cont);
+      if(bandeborrador[i].User===user){
+        cont=cont+1;
+        if(bandeborrador.length!=null){
+          user_html = user_html + "<div id="+i+" class=' mostrar nave panel panel-default imagenConPieDeTexto sombra' >"+"<div onClick=' LOGIN.contoculto("+i+");'><span class= 'glyphicon glyphicon-envelope img-tam2'>"+"</span>"+"<span id='corrasun' class='text' style='color:black' >"+c.asunto+"&nbsp;"+"</span>"+
+          "<span id='corrcont' class='text' style='color:gray' maxlength='10'>" +"-"+ c.contenido+"</span>"+"<span title='Eliminar correo' id='trash' class='glyphicon glyphicon-trash img-tam' style='float:right' onClick='LOGIN.eliminarcorreoborrador("+i+");'></span></div>"+"<nav><div id="+"C"+i+"></div></nav>"+
+          "<div id="+"M"+i+" class='ocultar 'class='pr colocar'><div ><div class='animated fadeIn colornuevo sombra2'>"+
+          "<header class=he><div><p class=txt izq>"+c.asunto+"</p><div class=>"+
+          "<a title=Eliminar correo>"+
+          "<a onclick='LOGIN.editarcorreoborrador("+i+");' ><img class='padding' title='Editar mensaje' src='Imagenes/edit.png'>"+
+          "<a/><a onclick='LOGIN.eliminarcorreoborrador();' title='Eliminar correo'><img class='padding' src='Imagenes/trash.png'><a/>"
+          +"</div></div></header><hr>"+ "<div class='div'><p class='txt-izq'>"+c.para+"</p>"+"<div></div><div>"+"<p class='contenido'>"+c.contenido+"</p>"+"</div>"+"</div>"
+          +"</div></div></div>"+"</div>"
+        }else{
+          user_html = user_html + "<nav class='bandeja'>"+"<p class='hoy salto'>"+"Aca se mostraran tus mensajes que se encuentran en borrador"+"</p>"+"</nav>";
         }
-    }
-  }else{
-        user_html = user_html + "<nav class='bandeja'><p class='hoy salto'>"+"Aca se mostraran tus mensajes que se encuentran en borrador</p></nav>";
         $('#correos_borrados').html(user_html);
         $('#icorreos').html(cont);
       }
-      
+    }
+  }else{
+    user_html = user_html + "<nav class='bandeja'><p class='hoy salto'>"+"Aca se mostraran tus mensajes que se encuentran en borrador</p></nav>";
+    $('#correos_borrados').html(user_html);
+    $('#icorreos').html(cont);
+  }
+
 
 },fecha:function(){
+  //funcion para colocar la fecha
   debugger;
   var hoy = new Date();
   var dd = hoy.getDate();
@@ -234,6 +241,7 @@ var LOGIN=LOGIN||
   $('#fecha').html(dd+"/"+mm+"/"+yyyy);
 
 },cargarcorreosenviados:function(){
+  //funcion para cargar los correos de la bandeja de enviados cada vez que el usuario se loguea
  debugger;
  var user_html = "";
  bandenviados = JSON.parse(localStorage.getItem("Enviados"));
@@ -242,34 +250,34 @@ var LOGIN=LOGIN||
  if(bandenviados!=null){
    for (var i = 0; i < bandenviados.length; i++) { 
     var e = bandenviados[i]; 
-      if(bandenviados[i].User===user){
-        var contador=contador+1;
-        if(bandenviados.length!=null){
-         user_html = user_html + "<div onClick=' LOGIN.contoculto("+i+");' id="+i+" class=' mostrar nave panel panel-default imagenConPieDeTexto sombra' >"+"<span class='glyphicon glyphicon-envelope'>"+"</span>"+"<span id='corrasun' class='text' style='color:black' >"+e.asunto+"&nbsp;"+"</span>"+
-         "<span id='corrcont' class='text' style='color:gray' maxlength='10'>" +"-"+ e.contenido+"</span>"+"<span id='trash' class='glyphicon glyphicon-trash' style='float:right' onClick='LOGIN.eliminarcorreoenviados("+i+");'></span>"+"<nav><div id="+"E"+i+"></div></nav>"+
-         "<div id="+"M"+i+" class='ocultar'class='pr colocar'><div ><div class= 'colornuevo class='animated fadeIn sombra2'>"+
-         "<header class=he><div><p class=txt izq>"+e.asunto+"</p><div class=>"+
-         "<a title=Eliminar correo>"+
-         "<img class='padding' title='Responder mensaje' src='Imagenes/responder.png'><a/>"+
-         "<a ><img class='padding' title='Editar mensaje' src='Imagenes/edit.png'>"+
-         "<a/><a onClick=LOGIN.eliminarcorreoenviados(); title='Eliminar correo'><img class='padding' src='Imagenes/trash.png'><a/>"
-         +"</div></div></header><hr>"+ "<div class='div'><p class='txt-izq'>"+e.para+"</p>"+"<div>"+"<header>" + e.asunto +"</header>"+"</div><div>"+"<p class='contenido'>"+e.contenido+"</p>"+"</div>"+"</div>"
-         +"</div></div></div>"+"</div>"
-       }else{
-        user_html = user_html + "<nav class='bandeja'><p class='hoy salto'>Aca se mostraran tus mensajes que se encuentran en borrador</p></nav>";
-      }
+    if(bandenviados[i].User===user){
+      var contador=contador+1;
+      if(bandenviados.length!=null){
+       user_html = user_html + "<div onClick=' LOGIN.contoculto("+i+");' id="+i+" class=' mostrar nave panel panel-default imagenConPieDeTexto sombra' >"+"<span class='glyphicon glyphicon-envelope img-tam2'>"+"</span>"+"<span id='corrasun' class='text' style='color:black' >"+e.asunto+"&nbsp;"+"</span>"+
+       "<span id='corrcont' class='text' style='color:gray' maxlength='10'>" +"-"+ e.contenido+"</span>"+"<span title='Eliminar correo' id='trash' class='glyphicon glyphicon-trash img-tam' style='float:right' onClick='LOGIN.eliminarcorreoenviados("+i+");'></span>"+"<nav><div id="+"E"+i+"></div></nav>"+
+       "<div id="+"M"+i+" class='ocultar'class='pr colocar'><div ><div class= 'colornuevo class='animated fadeIn sombra2'>"+
+       "<header class=he><div><p class=txt izq>"+e.asunto+"</p><div class=>"+
+       "<a title=Eliminar correo>"+
+       "<a ><img class='padding' title='Editar mensaje' src='Imagenes/edit.png'>"+
+       "<a/><a onClick=LOGIN.eliminarcorreoenviados(); title='Eliminar correo'><img class='padding' src='Imagenes/trash.png'><a/>"
+       +"</div></div></header><hr>"+ "<div class='div'><p class='txt-izq'>"+e.para+"</p>"+"<div></div><div>"+"<p class='contenido'>"+e.contenido+"</p>"+"</div>"+"</div>"
+       +"</div></div></div>"+"</div>"
+     }else{
+      user_html = user_html + "<nav class='bandeja'><p class='hoy salto'>Aca se mostraran tus mensajes que se encuentran en borrador</p></nav>";
+    }
     $('#correos_borrados').html(user_html);
     $('#ienviados').html(contador);
-    }
+  }
 }
 }else{
-        user_html = user_html + "<nav class='bandeja'>"+"<p class='hoy salto'>"+"Aca se mostraran tus mensajes que se encuentran en borrador"+"</p>"+"</nav>";
-        $('#correos_borrados').html(user_html);
-        $('#ienviados').html(contador);
-      }
+  user_html = user_html + "<nav class='bandeja'>"+"<p class='hoy salto'>"+"Aca se mostraran tus mensajes que se encuentran en borrador"+"</p>"+"</nav>";
+  $('#correos_borrados').html(user_html);
+  $('#ienviados').html(contador);
+}
 
 
 },mostrarcontenido:function(aidi){
+  //funcion que muestra el contenido del correo de la bandeja de salida
   debugger;
   var enviado_html = "";
   this.aidi=aidi;
@@ -291,6 +299,7 @@ var LOGIN=LOGIN||
   document.getElementById(maniacs).innerHTML=borrador_html;
 
 },mostrarcontenidoenviados:function(aid){
+  //funcion que muestra el contenido del correo de la bandeja de enviados
   debugger;
   var enviado_html = "";
   this.aid=aid;
@@ -302,7 +311,6 @@ var LOGIN=LOGIN||
       enviado_html = enviado_html +"<div id="+"M"+i+" class='ocultar pr colocar animated fadeOutDown'><div><div class=colornuevo sombra2>"+
       "<header class=he><div><p class=txt izq>"+envi.asunto+"</p><div class=>"+
       "<a onclick=document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block' title=Eliminar correo>"+
-      "<img class='padding' title='Responder mensaje' src='Imagenes/responder.png'><a/>"+
       "<a onclick='' title=Eliminar correo><img class='padding' title='Editar mensaje' src='Imagenes/edit.png'>"+
       "<a/><a onClick='LOGIN.eliminarcorreoenviados();' title='Eliminar correo'><img class='padding' src='Imagenes/trash.png'><a/>"
       +"</div></div></header><hr>"+ "<div class='div'><p class='txt-izq'>"+envi.para+"</p>"+"<div>"+"<header>" + envi.asunto +"</header>"+"</div><div>"+"<p class='contenido'>"+envi.contenido+"</p>"+"</div>"+"</div>"
@@ -312,35 +320,31 @@ var LOGIN=LOGIN||
   document.getElementById(mani).innerHTML=enviado_html;
 
 },contoculto:function(aidi2){
+  //funcion que muestra el contenido oculto del correo de la bandeja de salida
   debugger;
-
   var culto="M"+aidi2;
   if(conti===0){
     conti=conti+1;
     document.getElementById(culto).style.display = 'block';
-  //document.getElementById(culto).style.display = 'none';
-  //document.getElementById('corrcont').style.display = 'none';
-  //document.getElementById('corrasun').style.display = 'none';
-}else{
-  conti=0;
-  document.getElementById(culto).style.display = 'none';
-}
+  }else{
+    conti=0;
+    document.getElementById(culto).style.display = 'none';
+  }
 
 
 },contoculto2:function(aidi4){
+  //funcion que muestra el contenido oculto del correo de la bandeja de enviados
   debugger;
   var cul="O"+aidi4;
   if(conta===0){
     conta=conta+1;
     document.getElementById(cul).style.display = 'block';
-  //document.getElementById(culto).style.display = 'none';
-  //document.getElementById('corrcont').style.display = 'none';
-  //document.getElementById('corrasun').style.display = 'none';
-}else{
-  conta=0;
-  document.getElementById(cul).style.display = 'none';
-}
+  }else{
+    conta=0;
+    document.getElementById(cul).style.display = 'none';
+  }
 },eliminarcorreoborrador:function(ec){
+  //funcion que elimina un correo en la bandeja de salida
  debugger;
  var bor=new Array();
  this.ec=ec;
@@ -361,6 +365,7 @@ var LOGIN=LOGIN||
 LOGIN.cargarcorreos();
 
 },eliminarcorreoenviados:function(ec){
+  //funcion que elimina un correo en la bandeja de enviados
  debugger;
  var bor=new Array();
  this.ec=ec;
@@ -381,10 +386,12 @@ LOGIN.cargarcorreos();
 LOGIN.cargarcorreosenviados();
 
 },cargarnombre:function(){
+  //funcion para mostrar el nombre del usuario que se acaba de loguear
  var uuser = JSON.parse(localStorage.getItem("Online")).online;
  $('#nomuser').html(uuser);
 
 },editarcorreoborrador:function(edit){
+  //funcion que permite editar correos en la bandeja de salida
   debugger;
   this.edit = edit;
   document.getElementById("M"+edit).style.display='none';
@@ -394,46 +401,64 @@ LOGIN.cargarcorreosenviados();
       var editarmensaje= "<div>"+
       "<div id="+"O"+i+" onClick='LOGIN.contoculto2("+edit+");'></div><div class='colornuevo sombra2'><header class='he'><div><input id='ediasunto' class='ta color' type=text value="+editarcorreo[i].asunto+"></div>"+
       "</header><hr><div class='div'><input id='edipara' class='ta color' type=text value="+editarcorreo[i].para+">"+
-      "<div></br><textarea id='edicontenido' class='tamano3 col' type=text placeholder=Escribe aqui>"+editarcorreo[i].contenido+"</textarea>"+
-      "<button title='Enviar mensaje editado' class='boton b2 bt' type=button onClick='LOGIN.guardaredicion("+i+");'><span class='glyphicon glyphicon-ok'></span></button><button title='Cancelar edicion' onClick='document.getElementById("+"O"+i+").style.display='none';' class='boton b2 bt colo sp' type=button><span class='glyphicon glyphicon-remove'></span></button></div></br></div></div></div>";
+      "<div></br><textarea id='edicontenido' class='tamano3 col2' type='text' placeholder='Escribe aqui'>"+editarcorreo[i].contenido+"</textarea>"+
+      "<button title='Enviar mensaje editado' class='boton b2 bt' type=button onClick='LOGIN.guardaredicion("+i+"); window.reload();'><span class='glyphicon glyphicon-ok'></span></button><button title='Cancelar edicion' onClick='document.getElementById("+"O"+i+").style.display='none';' class='boton b2 bt colo sp' type=button><span class='glyphicon glyphicon-remove'></span></button></div></br></div></div></div>";
       break;
     }
 
   }
   document.getElementById("C"+edit).innerHTML=editarmensaje;
-
 },guardaredicion:function(ed){
+  //funcion que permite guardar lo editado y cambiarlo de la bandeja de salida a la de enviados
   debugger;
- var eddit=new Array();
- var edienviado= new Array();
- this.ed=ed;
- var edita;
- var editacion;
- var edpara = document.getElementById("edipara").value;
- var edasunto = document.getElementById("ediasunto").value;
- var edcontenido = document.getElementById("edicontenido").value;
- ecorreo = JSON.parse(localStorage.getItem("Borradores"));
- envicorreo = JSON.parse(localStorage.getItem("Enviados"));
- localStorage.removeItem("Borradores");
- for (var i = 0; i < ecorreo.length; i++) {
-  if(i===ed&&ecorreo.length===1){
-    editacion={'User':ecorreo[i].User,'para':edpara,'asunto':edasunto,'contenido':edcontenido};
-  }if(i===ed){
-    editacion={'User':ecorreo[i].User,'para':edpara,'asunto':edasunto,'contenido':edcontenido};
-  }else{
-    edita={'User':ecorreo[i].User,'para':ecorreo[i].para,'asunto':ecorreo[i].asunto,'contenido':ecorreo[i].contenido};
-    eddit.push(edita);
+  var eddit=new Array();
+  var edienviado= new Array();
+  this.ed=ed;
+  var edita;
+  var editacion;
+  var edpara = document.getElementById("edipara").value;
+  var edasunto = document.getElementById("ediasunto").value;
+  var edcontenido = document.getElementById("edicontenido").value;
+  ecorreo = JSON.parse(localStorage.getItem("Borradores"));
+  envicorreo = JSON.parse(localStorage.getItem("Enviados"));
+  localStorage.removeItem("Borradores");
+  for (var i = 0; i < ecorreo.length; i++) {
+    if(i===ed&&ecorreo.length===1){
+      editacion={'User':ecorreo[i].User,'para':edpara,'asunto':edasunto,'contenido':edcontenido};
+    }if(i===ed){
+      editacion={'User':ecorreo[i].User,'para':edpara,'asunto':edasunto,'contenido':edcontenido};
+    }else{
+      edita={'User':ecorreo[i].User,'para':ecorreo[i].para,'asunto':ecorreo[i].asunto,'contenido':ecorreo[i].contenido};
+      eddit.push(edita);
     }
     localStorage.setItem("Borradores",JSON.stringify(eddit));
     document.getElementById("O"+this.ed).style.display='none';
-}
+  }
   edienviado.push(editacion);
   if(envicorreo!=null){
-  for (var i = 0; i < envicorreo.length; i++) {
-  editacion={'User':ecorreo[i].User,'para':envicorreo[i].para,'asunto':envicorreo[i].asunto,'contenido':envicorreo[i].contenido};
-  edienviado.push(editacion);
+    for (var i = 0; i < envicorreo.length; i++) {
+      editacion={'User':ecorreo[i].User,'para':envicorreo[i].para,'asunto':envicorreo[i].asunto,'contenido':envicorreo[i].contenido};
+      edienviado.push(editacion);
+    }
+  }
+  localStorage.setItem("Enviados",JSON.stringify(edienviado));
+
+},seleccionado:function(){
+  //funcion para que el usuario note cual bandeja tiene seleccionada (bandeja de enviados)
+  debugger;
+  if(cambio===true){
+    $("#salida").removeClass("seleccionado");
+    $("#enviados").addClass("seleccionado");
+    cambio=false;
+  }
+},seleccionado2:function(){
+  //funcion para que el usuario note cual bandeja tiene seleccionada (bandeja de salida)
+  debugger;
+  if(cambio===false){
+    $("#salida").addClass("seleccionado");
+    $("#enviados").removeClass("seleccionado");
+    cambio=true;
+  }
 }
-}
-localStorage.setItem("Enviados",JSON.stringify(edienviado));
-}
+
 };
