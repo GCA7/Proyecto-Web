@@ -17,32 +17,29 @@
 			<button class="boton b3" type="button" onclick = "location.href='index2.html'">Cerrar Sesion </button>
 			<img class="im dere2" id="imgavatar" title="Cuenta de Letter: Greivin Calvo Aguilar - greivindca7@letter.com"src="Imagenes/Avatar.png">
 			<p class="der2 visible-desktop visible-tablet" id="nomuser"></p>
-			<p class="pe">Letter</p>
+			<p class="pe visible-desktop visible-tablet">Letter</p>
 			<p id="username" class="pe" value=""></p>
 		</nav>
 	</header>
-	<section class="container containertan pr">
-		<div class="nav row pr">
+	<section class="container containertan">
+		<div class="nav row">
 			<div class="col-md-12">
 			<button type="button" title="Crear correo nuevo" class="b2" id="redactar" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">Redactar</button> </br>
 			<hr>
-			<ul>
-				<li class="a imagenConPieDeTexto seleccionado"><span class="glyphicon glyphicon-inbox"></span><a class="a left" selected="selected" onClick="LOGIN.cargarcorreos();">Salida</a><span class="badge left" id="icorreos"></span></li>
-				<li class="a imagenConPieDeTexto"><span class="glyphicon glyphicon-inbox"></span><a class="a left" onClick="LOGIN.cargarcorreosenviados();">Enviados</a><span class="badge left" id="ienviados"></span></li>
+			<ul >
+				<li id="salida"class="a imagenConPieDeTexto seleccionado"><span class="glyphicon glyphicon-inbox"></span><a class="a left" selected="selected" onClick="LOGIN.cargarcorreos(); LOGIN.seleccionado2();">Salida</a><span class="badge left" id="icorreos"></span></li>
+				<li id="enviados" class="a imagenConPieDeTexto"><span class="glyphicon glyphicon-inbox"></span><a class="a left" onClick="LOGIN.cargarcorreosenviados(); LOGIN.seleccionado(); ">Enviados</a><span class="badge left" id="ienviados"></span></li>
 			</ul>
 		 </div>
 		</div>
 		<nav class="floatright">
-			<p id="fecha" class="hoy salto">Hoy</p>
+			<p id="fecha" class="hoy salto visible-desktop visible-tablet">Hoy</p>
 			<div class="dere">
-				<a value="Actualizar Página" onclick="window.location.reload()"><span title="Recargar la página" class="glyphicon glyphicon-refresh tamano-icon{"> </span></a>
-				<a href="Eliminartodos.html">
-					<span title="Eliminar todos los correos sin marcar" class="glyphicon glyphicon-remove"></span>
-				</a>
+				<a value="Actualizar Página" onclick="window.location.reload()"><span title="Recargar la página" class="glyphicon glyphicon-refresh tamano-icon visible-desktop visible-tablet"> </span></a>
 			</div>
-			<hr>
-			<div class="pr" id="correos_borrados">
-				<div class="row pr">
+			<hr class="visible-desktop visible-tablet">
+			<div class="row" id="correos_borrados">
+				<div class="col-sm-4 col-md-6">
 					<form id="correo">
 				</div>
 			</div>
@@ -72,7 +69,7 @@
 						</form>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal" onClick="LOGIN.salidaguardado(); LOGIN.cargarcorreos();">Save Message</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal" onClick="LOGIN.salidaguardado(); LOGIN.cargarcorreos(); window.location.reload();">Save Message</button>
 						<button type="button" class="btn btn-primary" onClick="LOGIN.enviadosguardado(); LOGIN.cargarcorreosenviados();">Send message</button>
 					</div>
 				</div>
