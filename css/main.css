@@ -88,6 +88,10 @@ button.b3{
 .col{
 	background-color: #106A7F;
 }
+.col2{
+	background-color: lightgray;
+	width: 100%;
+}
 .letra{
 	padding-top: 50px;
 	font-family: arial;
@@ -129,6 +133,7 @@ body.cuerpo{
 	padding-bottom: none;
 }
 img{max-width: 100%;}
+
 .verticalLine {
    margin-left: 100px;
    border-right: 1px solid gray;
@@ -277,7 +282,8 @@ margin-left: 15px;
 .ta{
 	border: none;
 	margin-bottom: 1px;
-	width: 100%;
+	width: 80%;
+	margin-left: 60px;
 }
 .color{
 	float: none;
@@ -362,11 +368,77 @@ footer {
 }
 .nave{
 	padding-top: 1%;
-	margin: 1%;
+	margin: 1px;
 	text-align: left;
 	background-color: lightgray;
 	float: center;
 	height: auto;
 	width: 90%;
 	padding-bottom: 7px;
+}
+
+.arr{
+	margin-top: 80px;
+}
+
+@media only screen and (max-width: 768px) {
+         .nav{
+         	margin-left: 30%;
+         	margin-top: 4px;
+			padding-top: 3px;
+			padding-bottom: 535px;
+			background-color: gray;
+			padding-left: 5px;
+
+         }
+         .nave{
+         	margin-left: -200px;
+			padding-top: 1%;
+			margin: 1px;
+			text-align: left;
+			background-color: lightgray;
+			float: left;
+			height: auto;
+			width: 90%;
+			padding-bottom: 7px;
+
+         }
+
+         .a{
+         	height: 45%;
+         	margin-left: 2px;
+         }
+         button.b2{
+         	float: center;
+			margin-left: 44px;
+	}
+	.imagenConPieDeTexto{
+		padding-right: 70px;
+	}
+
+        }
+@media only screen and (max-width: 627px) {
+		.nav{
+			margin-left: 10px;
+			margin-top: 4px;
+			padding-top: 3px;
+			padding-bottom: 535px;
+			background-color: gray;
+			padding-left: -50px;
+		}
+
+		.nave{
+			margin-left: -200px;
+			margin-top: 1%;
+			padding-top: 2px;
+			text-align: left;
+			background-color: lightgray;
+			float: left;
+			height: auto;
+			width: 90%;
+			padding-bottom: 10px;
+			padding-left: 30px;
+
+         }
+
 }
